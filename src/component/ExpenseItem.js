@@ -2,7 +2,7 @@ import './ExpenseItem.css'
 function ExpenseItem(props) {
 
     const months = ['January', 'februry', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    const month = props.date.getMonth();
+    const month = months[props.date.getMonth()];
     // console.log(month,"Month is here");
     const year = props.date.getFullYear();
     const day = props.date.getDate();
@@ -10,7 +10,7 @@ function ExpenseItem(props) {
     return (
         <div className="expense-item">
             <div >
-                <div>{months[month]}</div>
+                <div>{month}</div>
                 <div>{year}</div>
                 <div>{day}</div>
             </div>
