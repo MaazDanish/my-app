@@ -1,9 +1,9 @@
 import './ExpenseItem.css'
-function ExpenseItem() {
-    const expenseDate = new Date(2024,7,21).toISOString();
-    const expenseTitle = 'Mobile';
-    const expensePrice = 20000;
-    const expenseLocation = 'Bangalore';
+function ExpenseItem(props) {
+    const expenseDate = props.date.toISOString();
+    const expenseTitle = props.title;
+    const expensePrice = props.price;
+    const expenseLocation = props.location;
     return (
         <div className="expense-item">
             <div >{expenseDate}</div>

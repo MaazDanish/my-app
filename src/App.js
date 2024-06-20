@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <h> Hello world</h>
-      <ExpenseItem></ExpenseItem>
+      <ExpenseItem date={new Date(2024, 6, 21)} title='Book' price='20' location='Delhi'></ExpenseItem>
     </div>
   );
 }
