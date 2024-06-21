@@ -1,7 +1,7 @@
 import './ExpenseDate.css';
 const months = ['January', 'februry', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
-function ExpenseDate(props) {
+const ExpenseDate = (props) => {
     const month = months[props.date.getMonth()];
     const year = props.date.getFullYear();
     const day = props.date.getDate();

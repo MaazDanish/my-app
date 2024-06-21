@@ -7,7 +7,7 @@ const expenses = [
   { id: 4, date: new Date(2024, 9, 11), title: 'Brush', price: 10, location: 'UK' }
 ]
 
-function App() {
+const App = () => {
 
   return (
     <div>
@@ -15,7 +15,7 @@ function App() {
       <Expenses expenses={expenses} />
     </div>
   );
-  
+
 }
 
 export default App;
