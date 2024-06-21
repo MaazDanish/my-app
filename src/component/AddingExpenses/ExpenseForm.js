@@ -4,19 +4,39 @@ import def from "ajv/dist/vocabularies/applicator/additionalItems";
 
 
 const ExpenseForm = () => {
-    const [inputTitle, setInputTitle] = useState("");
-    const [inputAmount, setInputAmount] = useState("");
-    const [inputDate, setInputDate] = useState("");
+
+    const [userInput, setUserInput] = useState({
+        enteredTitle: "", enteredAmount: "", enteredDate: ""
+    })
+    // const [inputTitle, setInputTitle] = useState("");
+    // const [inputAmount, setInputAmount] = useState("");
+    // const [inputDate, setInputDate] = useState("");
     const titleHandler = (event) => {
-        setInputTitle(event.target.value);
+        // setInputTitle(event.target.value);
+        setUserInput((prevState) => {
+            return {
+                ...prevState,
+                enteredTitle:event.target.value
+            }
+        })
     }
 
     const amountHandler = (event) => {
-        setInputAmount(event.target.value);
+        setUserInput((prevState) => {
+            return {
+                ...prevState,
+                enteredAmount:event.target.value
+            }
+        })
     }
 
     const dateHandler = (event) => {
-        setInputDate(event.target.value);
+        setUserInput((prevState) => {
+            return {
+                ...prevState,
+                enteredDate:event.target.value
+            }
+        })
     }
 
     return (
