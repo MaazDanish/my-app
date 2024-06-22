@@ -21,9 +21,8 @@ function Expenses(props) {
   return (
     <Card className="expenses">
       <ExpensesFilter selected={filteredYear} onChangeFilter={changeFilterHandler} />
-      {filteredExpenses.length === 0 ? (
-        <p>No Data Is Found</p>
-      ) : filteredExpenses.length === 1 ? (
+      {filteredExpenses.length === 0 && <p>No data fount</p>}
+      {filteredExpenses.length === 1 &&
         filteredExpenses.map((expense) => {
           console.log(expense.date, filteredYear);
           return (
@@ -34,26 +33,27 @@ function Expenses(props) {
                 date={expense.date}
                 price={expense.price}
               />
-              < p > Only one expense found</p>
+              <p>only one data found</p>
             </>
           );
         })
-      ) : (
-        filteredExpenses.map((expense) => {
-          console.log(expense.date, filteredYear);
-          return (
-            <ExpenseItem
-              key={expense.id}
-              title={expense.title}
-              date={expense.date}
-              price={expense.price}
-            />
-          );
-        })
-      )
       }
+      {filteredExpenses.length > 1 && filteredExpenses.map((expense) => {
+        console.log(expense.date, filteredYear);
+        return (
 
-      {/* {} */}
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            date={expense.date}
+            price={expense.price}
+          />
+
+
+        );
+      })}
+
+
     </Card >
   );
 }
