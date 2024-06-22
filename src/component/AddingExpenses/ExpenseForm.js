@@ -3,7 +3,7 @@ import './ExpenseForm.css';
 import def from "ajv/dist/vocabularies/applicator/additionalItems";
 
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [inputTitle, setInputTitle] = useState("");
     const [inputAmount, setInputAmount] = useState("");
     const [inputDate, setInputDate] = useState("");
@@ -22,16 +22,18 @@ const ExpenseForm = () => {
     const formHandler = (event) => {
         event.preventDefault();
         const expenseData = {
+            id: 11,
             title: inputTitle,
-            amount: inputAmount,
+            price: inputAmount,
             date: new Date(inputDate)
         }
-        console.log(expenseData);
+        props.onSaveExpenseData(expenseData);
+        // console.log(expenseData);
 
         setInputTitle("");
         setInputAmount("");
         setInputDate("");
-        
+
     }
 
     return (
