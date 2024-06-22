@@ -18,42 +18,41 @@ function Expenses(props) {
     return xpense.date.getFullYear().toString() === filteredYear;
   })
 
-  return (
-    <Card className="expenses">
-      <ExpensesFilter selected={filteredYear} onChangeFilter={changeFilterHandler} />
-      {filteredExpenses.length === 0 && <p>No data fount</p>}
-      {filteredExpenses.length === 1 &&
-        filteredExpenses.map((expense) => {
-          console.log(expense.date, filteredYear);
-          return (
-            <>
-              <ExpenseItem
-                key={expense.id}
-                title={expense.title}
-                date={expense.date}
-                price={expense.price}
-              />
-              <p>only one data found</p>
-            </>
-          );
-        })
-      }
-      {filteredExpenses.length > 1 && filteredExpenses.map((expense) => {
-        console.log(expense.date, filteredYear);
-        return (
+  let content = <p className="expense-p">No data found</p>;
 
+  if (filteredExpenses.length === 1) {
+    content = filteredExpenses.map((expense) => {
+      console.log(expense.date, filteredYear);
+      return (
+        <>
           <ExpenseItem
             key={expense.id}
             title={expense.title}
             date={expense.date}
             price={expense.price}
           />
+          <p className="expense-p">only one data found</p>
+        </>
+      );
+    })
+  } else if (filteredExpenses.length > 1) {
+    content = filteredExpenses.map((expense) => {
+      console.log(expense.date, filteredYear);
+      return (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          date={expense.date}
+          price={expense.price}
+        />
+      );
+    })
+  }
 
-
-        );
-      })}
-
-
+  return (
+    <Card className="expenses">
+      <ExpensesFilter selected={filteredYear} onChangeFilter={changeFilterHandler} />
+      {content}
     </Card >
   );
 }
