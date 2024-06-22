@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import './ExpenseForm.css';
-import def from "ajv/dist/vocabularies/applicator/additionalItems";
-
 
 const ExpenseForm = (props) => {
     const [inputTitle, setInputTitle] = useState("");
@@ -36,9 +34,14 @@ const ExpenseForm = (props) => {
 
     }
 
+    const changeVisibilityHandler = () => {
+        props.onCancel();
+    }
+
     return (
         <form onSubmit={formHandler}>
-            <div className="new-expense__controls">
+
+            <div className="new-expense__controls" id="field-form">
                 <div className="new-expense__control">
                     <label htmlFor="title">Title</label>
                     <input type="text" value={inputTitle} id="title" onChange={titleHandler}></input>
@@ -52,9 +55,12 @@ const ExpenseForm = (props) => {
                     <input type="date" id="date" value={inputDate} min="2024-01-01" max="2025-01-01" onChange={dateHandler}></input>
                 </div>
             </div>
+
             <div className="new-expense__actions">
+                <button type="button" onClick={changeVisibilityHandler}> Cancel </button>
                 <button type="submit"> Add Expense </button>
             </div>
+
         </form>
     )
 }

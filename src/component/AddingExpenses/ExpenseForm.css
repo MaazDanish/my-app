@@ -25,3 +25,6 @@
     text-align: right;
   }
   
+  #field-form{
+    display: flex;
+  }

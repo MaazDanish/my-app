@@ -20,31 +20,24 @@ function Expenses(props) {
 
   let content = <p className="expense-p">No data found</p>;
 
-  if (filteredExpenses.length === 1) {
+  if (filteredExpenses.length > 0) {
     content = filteredExpenses.map((expense) => {
       console.log(expense.date, filteredYear);
       return (
         <>
+        
           <ExpenseItem
             key={expense.id}
             title={expense.title}
             date={expense.date}
             price={expense.price}
           />
-          <p className="expense-p">only one data found</p>
+        
+          {filteredExpenses.length === 1 &&
+            (<p className="expense-p">only one data found</p>)
+          }
+         
         </>
-      );
-    })
-  } else if (filteredExpenses.length > 1) {
-    content = filteredExpenses.map((expense) => {
-      console.log(expense.date, filteredYear);
-      return (
-        <ExpenseItem
-          key={expense.id}
-          title={expense.title}
-          date={expense.date}
-          price={expense.price}
-        />
       );
     })
   }
