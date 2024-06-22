@@ -21,7 +21,7 @@ function Expenses(props) {
   return (
     <Card className="expenses">
       <ExpensesFilter selected={filteredYear} onChangeFilter={changeFilterHandler} />
-      {filteredExpenses.map((expense) => {
+      {filteredExpenses.length === 0 ? <p>No Data Is Found</p> : filteredExpenses.map((expense) => {
         console.log(expense.date, filteredYear);
         return (
           <ExpenseItem
@@ -33,6 +33,7 @@ function Expenses(props) {
         );
 
       })}
+      {/* {} */}
     </Card>
   );
 }
